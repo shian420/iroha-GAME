@@ -68,49 +68,49 @@ var classname;
 var images=[];
 var images2=[];
 var soundArr=[
-  'voice/iroha1.wav',
-  'voice/iroha2.wav',
-  'voice/iroha3.wav',
-  'voice/iroha4.wav',
-  'voice/iroha5.wav',
-  'voice/iroha6.wav',
-  'voice/iroha7.wav',
-  'voice/iroha8.wav',
-  'voice/iroha9.wav',
-  'voice/iroha10.wav',
-  'voice/iroha11.wav',
-  'voice/iroha12.wav',
-  'voice/iroha13.wav',
-  'voice/iroha14.wav',
-  'voice/iroha15.wav',
-  'voice/iroha16.wav',
-  'voice/iroha17.wav',
-  'voice/iroha18.wav',
-  'voice/iroha19.wav',
-  'voice/iroha20.wav'
+  'voice/iroha1.mp3',
+  'voice/iroha2.mp3',
+  'voice/iroha3.mp3',
+  'voice/iroha4.mp3',
+  'voice/iroha5.mp3',
+  'voice/iroha6.mp3',
+  'voice/iroha7.mp3',
+  'voice/iroha8.mp3',
+  'voice/iroha9.mp3',
+  'voice/iroha10.mp3',
+  'voice/iroha11.mp3',
+  'voice/iroha12.mp3',
+  'voice/iroha13.mp3',
+  'voice/iroha14.mp3',
+  'voice/iroha15.mp3',
+  'voice/iroha16.mp3',
+  'voice/iroha17.mp3',
+  'voice/iroha18.mp3',
+  'voice/iroha19.mp3',
+  'voice/iroha20.mp3'
 ];
 
 var kaguyaSE=[
-  'voice/kaguya1.wav',
-  'voice/kaguya2.wav',
-  'voice/kaguya3.wav',
-  'voice/kaguya4.wav',
-  'voice/kaguya5.wav',
-  'voice/kaguya6.wav',
-  'voice/kaguya7.wav',
-  'voice/kaguya8.wav',
-  'voice/kaguya9.wav',
-  'voice/kaguya10.wav',
-  'voice/kaguya11.wav',
-  'voice/kaguya12.wav',
-  'voice/kaguya13.wav',
-  'voice/kaguya14.wav',
-  'voice/kaguya15.wav',
-  'voice/kaguya16.wav',
-  'voice/kaguya17.wav',
-  'voice/kaguya18.wav',
-  'voice/kaguya19.wav',
-  'voice/kaguya20.wav'
+  'voice/kaguya1.mp3',
+  'voice/kaguya2.mp3',
+  'voice/kaguya3.mp3',
+  'voice/kaguya4.mp3',
+  'voice/kaguya5.mp3',
+  'voice/kaguya6.mp3',
+  'voice/kaguya7.mp3',
+  'voice/kaguya8.mp3',
+  'voice/kaguya9.mp3',
+  'voice/kaguya10.mp3',
+  'voice/kaguya11.mp3',
+  'voice/kaguya12.mp3',
+  'voice/kaguya13.mp3',
+  'voice/kaguya14.mp3',
+  'voice/kaguya15.mp3',
+  'voice/kaguya16.mp3',
+  'voice/kaguya17.mp3',
+  'voice/kaguya18.mp3',
+  'voice/kaguya19.mp3',
+  'voice/kaguya20.mp3'
 ];
 
 
@@ -124,9 +124,9 @@ const irohaBtn=document.getElementById('irohaBtn');
 const kaguyaBtn=document.getElementById('kaguyaBtn');
 const h2=document.querySelector('h2');
 const reslutWp=document.getElementById('resultWp');
-const titleMc=new Audio('harumodoki.wav');
+const titleMc=new Audio('harumodoki.mp3');
 const endSE=new Audio();
-var endBGM=['megumi.wav','kaguya.wav'];
+var endBGM=['megumi.mp3','kaguya.mp3'];
 
 
 //irohaBtn.addEventListener('touchstart',function(){
