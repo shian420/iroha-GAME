@@ -130,7 +130,9 @@ var endBGM=['megumi.mp3','kaguya.mp3'];
 
 
 irohaBtn.addEventListener('click',function(){
-
+  $(function(){
+    $('#resultWp').fadeOut(1000);
+  });
   classname="defaulut";
   kaguyaflg=false;
   irohaflg=true;
