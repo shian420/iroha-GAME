@@ -1,0 +1,560 @@
+
+/*function id(id){
+  return document.getElementById(id);
+}
+
+  const array=[1,2,3,4,5];
+  const array2=[1,2,3,4,5];
+  var count=0;
+
+  for(var i=0;i<5;i++){
+//ランダムなインデックス番号を代入している
+  const rand=Math.floor(Math.random()*array.length);
+  const rand2=Math.floor(Math.random()*array2.length);
+
+//ランダムに取り出した配列の値を代入している
+  const newArray=array[rand];
+  const newArray2=array2[rand2];
+  array.splice(rand,1);
+  array2.splice(rand2,1);
+  console.log(newArray2);
+}
+
+const cardBox=document.getElementById('cardBox');
+for(var j=1;j<11;j++){
+  const div=document.createElement('div');
+  div.id="card" + j;
+  div.className="cards";
+  cardBox.appendChild(div);
+}
+const cards=document.getElementsByClassName('cards');
+cards.addEventListener('click',()=>{//クリックしたら発生
+  //最終的に処理を入れる
+});
+
+
+if(count === 1){
+  if(2===2 && 1===1){
+    console.log("正解！");
+    count=0;
+  }else if(1 === 1){
+    console.log("違います");
+    count=0;
+  }
+
+}else{
+    //カードを引いたのが1回目なら
+    count=1;
+  }
+}//ただの囲み
+*/
+{//ここから神経衰弱
+var cardCase=[];
+var countf=true;
+var timerFlg=false;
+var timerFlg2=false;
+var titleMcflg=false;
+var titleMcflg2=false;
+var irohaflg=false;
+var kaguyaflg=false;
+var cardss;
+var cardss2;
+var soimgArr=[];
+var co;
+var sound;
+var cardIn=0;
+var text;
+var classname;
+var images=[];
+var images2=[];
+var soundArr=[
+  'voice/iroha1.wav',
+  'voice/iroha2.wav',
+  'voice/iroha3.wav',
+  'voice/iroha4.wav',
+  'voice/iroha5.wav',
+  'voice/iroha6.wav',
+  'voice/iroha7.wav',
+  'voice/iroha8.wav',
+  'voice/iroha9.wav',
+  'voice/iroha10.wav',
+  'voice/iroha11.wav',
+  'voice/iroha12.wav',
+  'voice/iroha13.wav',
+  'voice/iroha14.wav',
+  'voice/iroha15.wav',
+  'voice/iroha16.wav',
+  'voice/iroha17.wav',
+  'voice/iroha18.wav',
+  'voice/iroha19.wav',
+  'voice/iroha20.wav'
+];
+
+var kaguyaSE=[
+  'voice/kaguya1.wav',
+  'voice/kaguya2.wav',
+  'voice/kaguya3.wav',
+  'voice/kaguya4.wav',
+  'voice/kaguya5.wav',
+  'voice/kaguya6.wav',
+  'voice/kaguya7.wav',
+  'voice/kaguya8.wav',
+  'voice/kaguya9.wav',
+  'voice/kaguya10.wav',
+  'voice/kaguya11.wav',
+  'voice/kaguya12.wav',
+  'voice/kaguya13.wav',
+  'voice/kaguya14.wav',
+  'voice/kaguya15.wav',
+  'voice/kaguya16.wav',
+  'voice/kaguya17.wav',
+  'voice/kaguya18.wav',
+  'voice/kaguya19.wav',
+  'voice/kaguya20.wav'
+];
+
+//いろは
+
+
+for(var iij=1;iij<=20;iij++){
+  images.push(iij);
+  images2.push(iij);
+}
+
+const titleBtn=document.getElementById('titleBtn');
+const irohaBtn=document.getElementById('irohaBtn');
+const kaguyaBtn=document.getElementById('kaguyaBtn');
+const h2=document.querySelector('h2');
+const reslutWp=document.getElementById('resultWp');
+const titleMc=new Audio('harumodoki.wav');
+const endSE=new Audio();
+var endBGM=['megumi.wav','kaguya.wav'];
+irohaBtn.onclick=function(){
+  classname="defaulut";
+  kaguyaflg=false;
+  irohaflg=true;
+
+if(titleMcflg2){
+  endSE.pause();
+  endSE.currentTime=0;
+}
+
+  sample1(classname);
+  shuffle2(soundArr,images);//ここに使う音声画像を入れる
+
+}//ここまでいろは編
+
+//ここからかぐや編
+kaguyaBtn.onclick=function(){
+  classname="kaguyaBack";
+  kaguyaflg=true;
+  irohaflg=false;
+
+  if(titleMcflg2){
+    endSE.pause();
+    endSE.currentTime=0;
+  }
+
+  sample1(classname);
+  shuffle2(kaguyaSE,images2);
+}//かぐや編onclick
+
+
+
+
+//div作成のための関数
+function sample1(classname){
+if(titleMcflg) titleMc.pause();
+
+$(function(){
+  $('#resultWp').fadeOut(1000);
+});
+
+var arr=[];
+for(var i=0;i<10;i++){
+  //2組の数値を同じ配列に代入
+  arr.push(i);
+  arr.push(i);
+  //0~9が2つずつある状態計20個
+}
+shuffl(arr);//ナンバーシャッフル
+
+//div生成
+const cardBox=document.getElementById('cardBox');
+
+for(var i=0;i<20;i++){
+const div=document.createElement('div');
+div.className="card";//最初は裏
+div.classList.add(classname);
+div.index=i;
+div.number=arr[i];
+//soundとdiv.numberは対応している
+div.innerHTML="";
+div.onclick=turn;
+
+cardBox.appendChild(div);
+cardCase.push(div);
+}
+}
+//ここまでsample1
+
+//ここから共通スタート画面
+const firstDisplays=document.getElementById('firstDisplays');
+
+titleBtn.onclick=function(){
+  $(function(){
+    $('#firstDisplays').slideUp(2000);
+  });
+
+setTimeout(function(){
+
+titleMc.load();
+  titleMc.loop=true;
+  titleMc.play();
+  titleMcflg=true;
+},1000);
+}
+
+  //配列シャッフル　かぐや編でも使用
+function shuffle2(soundArr,images){
+
+  soimgArr.splice(0,2);
+  var n2=soundArr.length;
+  var j2,temp2;
+
+  while(n2){//n2は10
+  j2=Math.floor(Math.random()*n2--);
+  temp2=soundArr[n2];
+  soundArr[n2]=soundArr[j2];
+  soundArr[j2]=temp2;
+
+  temp2=images[n2];
+  images[n2]=images[j2];
+  images[j2]=temp2;
+}
+ soimgArr.push(soundArr,images);
+ console.log(soimgArr);
+ return soimgArr;
+}
+
+function shuffl(arr){
+  var n=arr.length;
+  var j,temp;
+  while(n){//20回繰り返す
+
+  j=Math.floor(Math.random()*n--);//nを1減らす
+temp=arr[n];//元の19～0番目の値が順にtempに入る。
+arr[n]=arr[j];//元の配列0～19番目(ランダム)の値を順に代入
+  arr[j]=temp;//元の0番目、1番目...をランダムj位置に代入
+}
+return arr;//元の値がランダムに入っている。
+}//シャッフル終了
+
+
+
+
+
+//かぐや編でも使う
+function turn(e){
+var div=e.target;
+
+if(irohaflg){
+  text="bg";
+}else{
+  text="bgk";
+}
+
+if(timerFlg) return;
+
+if(timerFlg2){
+  cardss2.className="card";
+  cardss2.classList.add(classname);
+  cardss2.innerHTML="";
+  cardss.className="card";
+  cardss.classList.add(classname);
+  cardss.innerHTML="";
+  timerFlg2=false;
+}
+
+  if(co === 1){
+     sound.pause();
+   }
+
+  if(div.innerHTML == ""){//もし裏なら
+  div.classList.add(text + soimgArr[1][div.number]);
+  div.classList.remove(classname);
+  div.innerHTML=div.number;
+
+  sound=new Audio(soimgArr[0][div.number]);
+  sound.play();
+
+  co=1;
+  //その数字になる
+    }else{
+      return;
+    }
+    //1回目とか関係なくあくまで裏かどうかのみ
+  if(countf){ //初めて引いた
+    cardss=div; //1回目に引いたカード(numberやindexは.を付ける)
+    countf=false;
+
+  }else{ //2回目
+
+    if(cardss.number == div.number){
+
+      cardIn++;
+      cardss2=div;
+      timerFlg=true;
+
+        sound.addEventListener('ended',function(){
+
+          if(cardIn === 10){
+
+              const remup=document.querySelectorAll('p');
+              const clearTime=document.getElementById('clearTime');
+              const irohaImg=document.getElementById('irohaImg');
+              const kaguyaImg=document.getElementById('kaguyaImg');
+
+              remup[1].classList.add("premove");
+              remup[2].classList.add("premove");
+              remup[3].classList.add("premove");
+              remup[4].innerHTML="Thank You For Playing!";
+              clearTime.innerHTML='タイム';
+
+            $(function(){
+              $('#resultWp')
+              .slideDown(500);
+              $('.close').remove();
+            });
+
+
+
+
+            if(irohaflg){
+              endSE.src=endBGM[0];
+              endSE.loop=true;
+              endSE.play();
+
+              clearTime.className="clearI";
+              remup[5].className="blackP";
+              kaguyaImg.className='kaguyaA';
+              irohaImg.className='irohaA';
+              resultWp.className="irohaH";
+              remup[4].className="blackiwai";
+              h2.className='omedeto';
+              h2.innerHTML="一色いろは編クリア！";
+              irohaBtn.innerHTML="もういちど";
+              kaguyaBtn.innerHTML="かぐ告編へ";
+              //irohaflg true
+          }else{
+            endSE.src=endBGM[1];
+            endSE.loop=true;
+            endSE.play();
+
+            clearTime.className='clearTK';//タイム白
+            remup[5].className="whiteP";//文字色白
+            irohaImg.className='irohasu';//いろは画像削除
+            kaguyaImg.className='kaguyasama';//かぐや画像追加
+            resultWp.className="kaguyaH";//背景黒に
+            remup[4].className="zitai";//おめでとう白
+            h2.className='kaguyaO';
+            h2.innerHTML="かぐや編クリア！";
+            irohaBtn.innerHTML="一色いろは編へ";
+            kaguyaBtn.innerHTML="もういちど";
+          }
+            cardIn=0;
+            titleMcflg2=true;
+          }
+
+          cardss2.className="card close";
+          cardss.className="card close";
+          timerFlg=false;
+        });
+
+    }else{ //2回目で外れ 裏に戻す作業
+      cardss2=div;
+      timerFlg2=true;
+      sound.addEventListener('ended',function(){
+      cardss2.className="card";
+      cardss2.classList.add(classname);
+      cardss2.innerHTML="";
+      cardss.className="card";
+      cardss.classList.add(classname);
+      cardss.innerHTML="";
+      timerFlg2=false;
+    });
+  }
+  countf=true;
+}
+}
+}//turn()の終了
+//ここまで神経衰弱
+
+
+
+
+
+
+//どっとインストール
+const num=10;
+let array=[1,2,3,4,5,6,7,8,9,10];
+array.unshift(0,11);
+
+
+for(let i=0;i<array.length;i++){
+
+const div=document.createElement("div");
+div.classList.add("box");
+div.textContent=i+1;
+
+const winner=array[Math.floor(Math.random() * array.length)];
+
+div.addEventListener('click',()=>{
+
+switch(winner){
+  case 1:
+  case 2:
+  div.innerHTML="当たり！";
+  div.classList.add("win");
+  break;
+  case 3:
+  case 4:
+    div.innerHTML="はずれ";
+  div.classList.add("lose");
+break;
+case 5:
+case 6:
+  div.innerHTML="はずれ5,6";
+div.classList.add("lose");
+break;
+case 7:
+case 8:
+  div.innerHTML="はずれ7,8";
+div.classList.add("lose");
+break;
+case 9:
+case 10:
+  div.innerHTML="はずれ9,10";
+div.classList.add("lose");
+break;
+}
+});
+const container=document.getElementById('container');
+container.appendChild(div);
+}
+
+{
+  const a = x => x + 3;
+console.log(a(3));
+
+
+//BGM
+{
+  var count=0;
+  const btns=document.getElementById('btns');
+  const audio=new Audio('backmusic.wav');
+  audio.load();
+
+  function off(){
+    audio.pause();
+  btns.innerHTML="OFF";
+    count=0;
+  }
+
+function plays(){
+btns.classList.toggle("btnb");
+
+if(count === 1){
+  off();
+}else{
+
+if(audio.readyState === 4){
+
+audio.loop=true;
+  audio.play();
+  btns.innerHTML="ON";
+  count=1;
+}else{
+  audio.addEventListener('canplaythrough',(e)=>{
+    audio.removeEventListener('canplaythrough',arguments.callee);
+    audio.loop=true;
+    audio.play();
+    btns.innerHTML="ON";
+    count=1;
+  });
+}
+}
+}
+}
+{
+
+const scores=[10,20,30,40,50];
+
+console.log(scores[0]);
+scores.shift();
+console.log(scores);
+scores.pop();
+console.log(scores);
+scores.unshift(10,15);
+console.log(scores);
+scores.push(60,70);
+console.log(scores);
+scores.splice(3,3);
+console.log(scores);
+scores.splice(3,0,30,40,50,60);
+console.log(scores);
+
+//分割代入
+const [z,b,c,d,...other]=scores;
+console.log(other);
+
+const summary=(e,f,g,h)=>{
+  console.log(e+f+g+h);
+}
+summary(...other);
+
+console.log(scores);
+//scoresから渡される引数↓
+scores.forEach((test,index)=>{
+  console.log(index);
+  console.log(test);
+});
+
+//const newScores=scores.map(x => x *2);
+//console.log(newScores);
+
+const newScores=scores.filter(x =>{
+  if(x >30){
+    return true;
+  }else{
+    return false;
+  }
+});
+console.log(newScores);
+}
+//ここまで配列
+
+
+
+const mario={
+  color:"red",
+  game:"kart",
+  brother:"luigi",
+}
+
+const points={
+  x:20,
+  y:30,
+  ...mario,
+}
+console.log(points.color);
+
+const {x:z,y:b,game,name="shian",...others}=points;
+console.log(name + "," + game + ","  + z + "," + b);
+console.log(others);
+
+const newKey=Object.keys(points);
+newKey.forEach(key =>{
+  console.log("key=>"+ key + ":" + points[key]);
+});
+}
