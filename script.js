@@ -129,7 +129,7 @@ const endSE=new Audio();
 var endBGM=['megumi.wav','kaguya.wav'];
 
 
-irohaBtn.addEventListener('touchstart',function(){
+//irohaBtn.addEventListener('touchstart',function(){
 
   classname="defaulut";
   kaguyaflg=false;
@@ -143,7 +143,7 @@ if(titleMcflg2){
   sample1(classname);
   shuffle2(soundArr,images);//ここに使う音声画像を入れる
 
-});//ここまでいろは編
+//ここまでいろは編
 
 //ここからかぐや編
 kaguyaBtn.addEventListener('touchstart',function(){
