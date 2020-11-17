@@ -113,8 +113,6 @@ var kaguyaSE=[
   'voice/kaguya20.wav'
 ];
 
-//いろは
-
 
 for(var iij=1;iij<=20;iij++){
   images.push(iij);
@@ -129,7 +127,10 @@ const reslutWp=document.getElementById('resultWp');
 const titleMc=new Audio('harumodoki.wav');
 const endSE=new Audio();
 var endBGM=['megumi.wav','kaguya.wav'];
-irohaBtn.onclick=function(){
+
+
+irohaBtn.addEventListener('touchstart',function(){
+
   classname="defaulut";
   kaguyaflg=false;
   irohaflg=true;
@@ -142,10 +143,10 @@ if(titleMcflg2){
   sample1(classname);
   shuffle2(soundArr,images);//ここに使う音声画像を入れる
 
-}//ここまでいろは編
+});//ここまでいろは編
 
 //ここからかぐや編
-kaguyaBtn.onclick=function(){
+kaguyaBtn.addEventListener('touchstart',function(){
   classname="kaguyaBack";
   kaguyaflg=true;
   irohaflg=false;
@@ -157,7 +158,7 @@ kaguyaBtn.onclick=function(){
 
   sample1(classname);
   shuffle2(kaguyaSE,images2);
-}//かぐや編onclick
+});//かぐや編onclick
 
 
 
@@ -190,7 +191,7 @@ div.index=i;
 div.number=arr[i];
 //soundとdiv.numberは対応している
 div.innerHTML="";
-div.onclick=turn;
+div.addEventListener('touchstart',turn);
 
 cardBox.appendChild(div);
 cardCase.push(div);
@@ -201,7 +202,7 @@ cardCase.push(div);
 //ここから共通スタート画面
 const firstDisplays=document.getElementById('firstDisplays');
 
-titleBtn.onclick=function(){
+titleBtn.addEventListener('touchstart',function(){
   $(function(){
     $('#firstDisplays').slideUp(2000);
   });
@@ -213,7 +214,7 @@ titleMc.load();
   titleMc.play();
   titleMcflg=true;
 },1000);
-}
+});
 
   //配列シャッフル　かぐや編でも使用
 function shuffle2(soundArr,images){
