@@ -407,6 +407,8 @@ if(timerFlg2){
             timearr2.push((timearr[0]));
             timearr2.push((timearr[1]));
             timearr2.push((timearr[2]));
+            timearr2.push((timearr[3]));
+
 
             skindevelop(timearr2,lastFlg2);
           }
