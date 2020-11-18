@@ -452,17 +452,17 @@ console.log(timearr);
 
 
 if(newtime[0] > timearr[0]){
-  newRecord();
+  newRecord(timearr);
 }
 if(newtime[0] === timearr[0]){
   if(newtime[1] > timearr[1]){
-    newRecord();
+    newRecord(timearr);
   }
 }
 if(newtime[0] === timearr[0]){
   if(newtime[1] === timearr[1]){
     if(newtime[2] > timearr[2]){
-      newRecord();
+      newRecord(timearr);
     }
   }
 }
@@ -470,7 +470,7 @@ flg=false;
 
 }
 
-function newRecord(){
+function newRecord(timearr){
 
 clearTime.style.color='red';
 clearTime.innerHTML='NEW RECORD! '+ timearr[3];
