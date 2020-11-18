@@ -51,6 +51,7 @@ if(count === 1){
 {//ここから神経衰弱
 var cardCase=[];
 var countf=true;
+var time;
 var timerFlg=false;
 var timerFlg2=false;
 var titleMcflg=false;
@@ -62,6 +63,7 @@ var cardss2;
 var soimgArr=[];
 var co;
 var sound;
+var startT;
 var cardIn=0;
 var text;
 var classname;
@@ -171,6 +173,8 @@ div.addEventListener('click',turn);
 cardBox.appendChild(div);
 cardCase.push(div);
 }
+startT=new Date();//開始時の時間再読み込みするたび変わる
+timestart();
 
   shuffle2(soundArr,images);//ここに使う音声画像を入れる
 });
@@ -351,7 +355,7 @@ if(timerFlg2){
               remup[2].classList.add("premove");
               remup[3].classList.add("premove");
               remup[4].innerHTML="Thank You For Playing!";
-              clearTime.innerHTML='タイム';
+              clearTime.innerHTML='タイム'+ time;
 
             $(function(){
               $('#resultWp')
@@ -421,3 +425,26 @@ if(timerFlg2){
 }
 }//turn()の終了
 //ここまで神経衰弱
+var timing=new Date();
+var Ms;
+var myT;
+const h4=document.querySelector('h4');
+
+function timestart(){
+
+time=setInterval(function(){
+
+  timing=new Date();//現在の時間に更新している
+myT=Math.floor((timing.getTime() - startT.getTime()));
+//現在ースタート時
+var H=Math.floor(myT/(1000*60*60));
+myT=myT - (H*60*60*1000);
+var M=Math.floor(myT/(1000*60));
+myT=myT - (M*60*1000);
+var S=Math.floor(myT/1000);
+Ms=myT%1000;
+
+h4.innerHTML='TIME '+ H + ":" + M + ':' + S + ':' + Ms;
+
+},1);
+}
