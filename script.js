@@ -69,6 +69,7 @@ var cardIn=0;
 var text;
 var classname;
 var newtime=[];
+lastFlg2=true;
 var images=[];
 var images2=[];
 var soundArr=[
@@ -383,7 +384,7 @@ if(timerFlg2){
               h2.innerHTML="一色いろは編クリア！";
               irohaBtn.innerHTML="もういちど";
               kaguyaBtn.innerHTML="かぐ告編へ";
-              skindevelop();
+              skindevelop(timearr,lastFlg);
               //irohaflg true
           }else{
             endSE.src=endBGM[1];
@@ -400,7 +401,14 @@ if(timerFlg2){
             h2.innerHTML="かぐや編クリア！";
             irohaBtn.innerHTML="一色いろは編へ";
             kaguyaBtn.innerHTML="もういちど";
-            skindevelop();
+
+            var timearr2=[];
+
+            timearr2.push((timearr[0]));
+            timearr2.push((timearr[1]));
+            timearr2.push((timearr[2]));
+
+            skindevelop(timearr2,lastFlg2);
           }
             cardIn=0;
             titleMcflg2=true;
@@ -429,11 +437,11 @@ if(timerFlg2){
 }
 }//turn()の終了
 //ここまで神経衰弱
-function skindevelop(){
+function skindevelop(timearr,flg){
 
 clearInterval(time);
 clearTime.innerHTML='CLEAR '+ timearr[3];
-if(lastFlg){
+if(flg){
   newtime.push(timearr[0]);
   newtime.push(timearr[1]);
   newtime.push(timearr[2]);
@@ -458,8 +466,8 @@ if(newtime[0] === timearr[0]){
     }
   }
 }
+flg=false;
 
-lastFlg=false;
 }
 
 function newRecord(){
