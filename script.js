@@ -58,6 +58,7 @@ var titleMcflg=false;
 var titleMcflg2=false;
 var irohaflg=false;
 var kaguyaflg=false;
+var lastFlg=true;
 var cardss;
 var cardss2;
 var soimgArr=[];
@@ -67,6 +68,7 @@ var startT;
 var cardIn=0;
 var text;
 var classname;
+var newtime=[];
 var images=[];
 var images2=[];
 var soundArr=[
@@ -231,6 +233,8 @@ div.addEventListener('click',turn);
 cardBox.appendChild(div);
 cardCase.push(div);
 }
+startT=new Date();
+timestart();
 }
 //ここまでsample1
 
@@ -355,15 +359,13 @@ if(timerFlg2){
               remup[2].classList.add("premove");
               remup[3].classList.add("premove");
               remup[4].innerHTML="Thank You For Playing!";
-              clearTime.innerHTML='タイム'+ time;
+
 
             $(function(){
               $('#resultWp')
               .slideDown(500);
               $('.close').remove();
             });
-
-
 
 
             if(irohaflg){
@@ -381,6 +383,7 @@ if(timerFlg2){
               h2.innerHTML="一色いろは編クリア！";
               irohaBtn.innerHTML="もういちど";
               kaguyaBtn.innerHTML="かぐ告編へ";
+              skindevelop();
               //irohaflg true
           }else{
             endSE.src=endBGM[1];
@@ -397,6 +400,7 @@ if(timerFlg2){
             h2.innerHTML="かぐや編クリア！";
             irohaBtn.innerHTML="一色いろは編へ";
             kaguyaBtn.innerHTML="もういちど";
+            skindevelop();
           }
             cardIn=0;
             titleMcflg2=true;
@@ -425,26 +429,76 @@ if(timerFlg2){
 }
 }//turn()の終了
 //ここまで神経衰弱
+function skindevelop(){
+
+clearInterval(time);
+clearTime.innerHTML='CLEAR '+ timearr[3];
+if(lastFlg){
+  newtime.push(timearr[0]);
+  newtime.push(timearr[1]);
+  newtime.push(timearr[2]);
+  console.log(newtime);
+
+}
+console.log(timearr);
+
+
+if(newtime[0] > timearr[0]){
+  newRecord();
+}
+if(newtime[0] === timearr[0]){
+  if(newtime[1] > timearr[1]){
+    newRecord();
+  }
+}
+if(newtime[0] === timearr[0]){
+  if(newtime[1] === timearr[1]){
+    if(newtime[2] > timearr[2]){
+      newRecord();
+    }
+  }
+}
+
+lastFlg=false;
+}
+
+function newRecord(){
+
+clearTime.style.color='red';
+clearTime.innerHTML='NEW RECORD! '+ timearr[3];
+newtime.splice(0,3);
+newtime.push(timearr[0]);
+newtime.push(timearr[1]);
+newtime.push(timearr[2]);
+}
+
 var timing=new Date();
 var Ms;
 var myT;
+var str;
+var timearr=[];
 const h4=document.querySelector('h4');
 
 function timestart(){
 
 time=setInterval(function(){
+  timearr=[];
 
   timing=new Date();//現在の時間に更新している
 myT=Math.floor((timing.getTime() - startT.getTime()));
 //現在ースタート時
-var H=Math.floor(myT/(1000*60*60));
-myT=myT - (H*60*60*1000);
 var M=Math.floor(myT/(1000*60));
 myT=myT - (M*60*1000);
 var S=Math.floor(myT/1000);
 Ms=myT%1000;
 
-h4.innerHTML='TIME '+ H + ":" + M + ':' + S + ':' + Ms;
+var md=M;
+var sd=S;
+var msd=Ms;
 
+
+str=h4.innerHTML='TIME '+ M + ':' + S + ':' + Ms;
+timearr.push(md,sd,msd,str);
+return timearr;
 },1);
 }
