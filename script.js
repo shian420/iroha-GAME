@@ -130,9 +130,7 @@ var endBGM=['megumi.mp3','kaguya.mp3'];
 
 
 irohaBtn.addEventListener('click',function(){
-  $(function(){
-    $('#resultWp').fadeOut(1000);
-  });
+
   classname="defaulut";
   kaguyaflg=false;
   irohaflg=true;
@@ -142,7 +140,38 @@ if(titleMcflg2){
   endSE.currentTime=0;
 }
 
-  sample1(classname);
+if(titleMcflg) titleMc.pause();
+
+$(function(){
+  $('#resultWp').fadeOut(1000);
+});
+
+var arr=[];
+for(var i=0;i<10;i++){
+  //2組の数値を同じ配列に代入
+  arr.push(i);
+  arr.push(i);
+  //0~9が2つずつある状態計20個
+}
+shuffl(arr);//ナンバーシャッフル
+
+//div生成
+const cardBox=document.getElementById('cardBox');
+
+for(var i=0;i<20;i++){
+const div=document.createElement('div');
+div.className="card";//最初は裏
+div.classList.add(classname);
+div.index=i;
+div.number=arr[i];
+//soundとdiv.numberは対応している
+div.innerHTML="";
+div.addEventListener('click',turn);
+
+cardBox.appendChild(div);
+cardCase.push(div);
+}
+
   shuffle2(soundArr,images);//ここに使う音声画像を入れる
 });
 //ここまでいろは編
