@@ -507,7 +507,7 @@ h4{
       color: rgb(0, 0, 0);
     }
     .startT{
-      font-size: 24px;
+      font-size: 19px;
       margin-top: 10px;
       margin-bottom: 15px;
     }
@@ -517,9 +517,10 @@ h4{
       font-size: 30px;
     }
     .p{
-      margin-top: 10px;
+      margin-top: 0;
        color: rgb(0, 0, 0);
        font-size: 16px;
+       line-height: 1.5em;
      }
      .zitai,.blackiwai{
        font-size: 30px;
@@ -531,9 +532,9 @@ h4{
       display: none;
     }
     .btn{
+      margin-top: 20px;
       display: inline-block;
-        width: 20%;
-        height: 14%;
+      width: calc(190 / (960px * 100vw));
         font-size: 17px;
         font-weight: bold;
         box-shadow: 3px 3px 4px 2px black;
