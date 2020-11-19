@@ -258,6 +258,8 @@ button span{
   height: 100%;
   left: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   z-index: 3;
   background-color: cornsilk;
 }
@@ -301,6 +303,7 @@ line-height: 50px;
   right: 0;
   z-index: 1;
   background-color: rgb(253, 238, 178);
+
 }
 .irohaH{
   background-color: rgb(253, 238, 178);
@@ -312,7 +315,6 @@ line-height: 50px;
   display: none;
 }
 .image{
-  background-color: violet;
   position: absolute;
   position: relative;
   width:100%;
@@ -435,4 +437,24 @@ color: white;
 h4{
   color: white;
   font-size: 40px;
+}
+
+@media screen and (max-width:960px){
+  .firstDisplay{
+    text-align: center;
+  }
+  .aline{
+    width: 80%;
+    height: 80$;
+    margin: 0 auto;
+  }
+  .non{
+    margin-left: 0;
+    width: 100%;
+    height: 150px;
+  }
+  .aline p{
+    margin:0 auto;
+    font-size: 20px;
+  }
 }
