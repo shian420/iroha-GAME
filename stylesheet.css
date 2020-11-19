@@ -21,6 +21,9 @@ time, mark, audio, video {
 *{
   font-family: system-ui,sans-serif;
 }
+*{
+  box-sizing: border-box;
+}
 
 body{
   background-color: black;
@@ -90,6 +93,7 @@ button span{
 
 .card-container{
   width: 1100px;
+  height: 100vh;
   padding-left: 20px;
   margin: 0 auto;
   padding-top: 50px;
@@ -248,8 +252,7 @@ button span{
 }
 .firstDisplay{
   position: fixed;
-  top: 0;
-  bottom: 0;
+  height: 100vh;
   left: 0;
   right: 0;
   z-index: 3;
@@ -289,10 +292,9 @@ line-height: 50px;
 
 .resultWrapper,.kaguyaH,.irohaH{
   position: fixed;
-  top: 0;
+  height: 100vh;
   left: 0;
   right: 0;
-  bottom: 0;
   z-index: 1;
   background-color: rgb(253, 238, 178);
 }
@@ -330,8 +332,7 @@ line-height: 50px;
   position: absolute;
   z-index: 2;
   left:100px ;
-  top: 0px;
-  bottom: 0;
+  height: 100vh;
   padding-top: 50px;
 }
 .omedeto,.kaguyaO,.start{

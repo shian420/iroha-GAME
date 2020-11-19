@@ -1,15 +1,12 @@
 $(function(){
   var hsize=$(window).height();
-  $('#firstDisplays').height(hsize);
-  $('#resultWp').height(hsize);
-  $('#cardBox').height(hsize);
+  $('#firstDisplays').css('height',hsize);
+  $('#resultWp').css('height',hsize);
+  $('#cardBox').css('height',hsize);
+  $('#imagC').css('height',hsize);
+
 });
-$(window).resize(function(){
-  var hsize=$(window).height();
-  $('#firstDisplays').height(hsize);
-  $('#resultWp').height(hsize);
-  $('#cardBox').height(hsize);
-});
+
 
 {//ここから神経衰弱
 var cardCase=[];
