@@ -1,11 +1,4 @@
-$(function(){
-  var hsize=$(window).height();
-  $('#firstDisplays').css('height',hsize);
-  $('#resultWp').css('height',hsize);
-  $('#cardBox').css('height',hsize);
-  $('#imagC').css('height',hsize);
 
-});
 
 
 {//ここから神経衰弱
