@@ -1,53 +1,16 @@
-
-/*function id(id){
-  return document.getElementById(id);
-}
-
-  const array=[1,2,3,4,5];
-  const array2=[1,2,3,4,5];
-  var count=0;
-
-  for(var i=0;i<5;i++){
-//ランダムなインデックス番号を代入している
-  const rand=Math.floor(Math.random()*array.length);
-  const rand2=Math.floor(Math.random()*array2.length);
-
-//ランダムに取り出した配列の値を代入している
-  const newArray=array[rand];
-  const newArray2=array2[rand2];
-  array.splice(rand,1);
-  array2.splice(rand2,1);
-  console.log(newArray2);
-}
-
-const cardBox=document.getElementById('cardBox');
-for(var j=1;j<11;j++){
-  const div=document.createElement('div');
-  div.id="card" + j;
-  div.className="cards";
-  cardBox.appendChild(div);
-}
-const cards=document.getElementsByClassName('cards');
-cards.addEventListener('click',()=>{//クリックしたら発生
-  //最終的に処理を入れる
+$(function(){
+  var hsize=$(window).height();
+  $('#firstDisplays').height(hsize);
+  $('#resultWp').height(hsize);
+  $('#cardBox').height(hsize);
+});
+$(window).resize(function(){
+  var hsize=$(window).height();
+  $('#firstDisplays').height(hsize);
+  $('#resultWp').height(hsize);
+  $('#cardBox').height(hsize);
 });
 
-
-if(count === 1){
-  if(2===2 && 1===1){
-    console.log("正解！");
-    count=0;
-  }else if(1 === 1){
-    console.log("違います");
-    count=0;
-  }
-
-}else{
-    //カードを引いたのが1回目なら
-    count=1;
-  }
-}//ただの囲み
-*/
 {//ここから神経衰弱
 var cardCase=[];
 var countf=true;
